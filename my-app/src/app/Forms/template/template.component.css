@@ -1,0 +1,7 @@
+button:disabled {
+  background-color: #d1d5db; /* Light gray background */
+  color: #9ca3af; /* Light gray text */
+  cursor: not-allowed; /* Change cursor to "not-allowed" when hovering */
+  opacity: 0.6; /* Make the button slightly transparent */
+  pointer-events: none; /* Prevent clicks on disabled button */
+}

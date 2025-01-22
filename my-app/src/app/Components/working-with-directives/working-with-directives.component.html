@@ -1,0 +1,224 @@
+<div class="grid grid-cols-3 gap-4 p-6 min-h-screen bg-gray-100">
+  <!-- First Section with Green Div -->
+  <div class="flex flex-col">
+    <!-- Green div -->
+    <div
+      *ngIf="isDiv1Visible"
+      class="px-7 py-2 bg-green-300 w-full text-center"
+    >
+      <div>Hide & Show</div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-2 flex space-x-4">
+      <button
+        (click)="hideBtn1()"
+        class="px-4 py-2 bg-blue-500 text-white rounded-lg"
+      >
+        Hide
+      </button>
+      <button
+        (click)="showBtn1()"
+        class="px-4 py-2 bg-gray-500 text-white rounded-lg"
+      >
+        Show
+      </button>
+    </div>
+  </div>
+
+  <!-- Second Section with Blue Div -->
+  <div class="flex flex-col">
+    <!-- Blue div -->
+    <div *ngIf="isDiv2Visible" class="px-7 py-2 bg-blue-300 w-full text-center">
+      <div>Toggle</div>
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="mt-2">
+      <button
+        (click)="toggleBtn()"
+        class="px-4 py-2 bg-purple-500 text-white rounded-lg"
+      >
+        Toggle
+      </button>
+    </div>
+  </div>
+
+  <!-- Third Section with Blue Div -->
+  <div class="flex flex-col">
+    <!-- Blue div -->
+    <div *ngIf="num1 == num2" class="px-7 py-2 bg-blue-300 w-full text-center">
+      <div>Comparison</div>
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="mt-2">
+      <input
+        [(ngModel)]="num1"
+        type="text"
+        class="rounded-md shadow-lg py-1 pl-2"
+        id="inputBox1"
+        placeholder="Enter Value here "
+      />
+      |
+      <input
+        [(ngModel)]="num2"
+        type="text"
+        class="rounded-md shadow-lg py-1 pl-2"
+        id="inputBox2"
+        placeholder="Enter Value here "
+      />
+    </div>
+  </div>
+
+  <!-- Fourth Section with Blue Div -->
+  <div class="flex flex-col">
+    <!-- Blue div -->
+    <div *ngIf="ischecked" class="px-7 py-2 bg-orange-300 w-full text-center">
+      <div>IsChecked</div>
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="mt-2">
+      ischecked: <input type="checkbox" [(ngModel)]="ischecked" />
+    </div>
+  </div>
+
+  <!-- Fifth Section with Blue Div -->
+  <div class="flex flex-col">
+    <!-- Blue div -->
+    <div
+      *ngIf="selectedCountry == 'USA'"
+      class="px-7 py-2 bg-red-300 w-full text-center"
+    >
+      <div>USA</div>
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="mt-2">
+      <select
+        [(ngModel)]="selectedCountry"
+        class="rounded-md shadow-lg py-1 pl-2"
+      >
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
+        <option value="Australia">Australia</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Control Flow Section with Blue Div -->
+  <div class="flex flex-col">
+    <!-- Blue div -->
+    <div class="px-7 py-2 w-full text-center">
+      <div>
+        <ol>
+          <li *ngFor="let item of countries">
+            <div
+              class="px-4 py-2 bg-red-100 border-1 outline-1 outline-black w-full text-center"
+            >
+              {{ item }}
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Six Section with Parametrized Directives -->
+  <div class="flex flex-col">
+    <!-- Blue div -->
+    <div [ngClass]="ColorofDiv" class="px-7 py-2 w-full text-center">
+      <div>{{ ColorofDiv }}</div>
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="mt-2">
+      <button class="mr-2 px-2 py-2 bg-red-200" (click)="changeColorToRed()">
+        Change To Red
+      </button>
+
+      <button
+        class="mr-2 px-2 py-2 bg-green-300"
+        (click)="changeColorToGreen()"
+      >
+        Change To Green
+      </button>
+    </div>
+  </div>
+
+  <!-- ternery operator condtion comparision using the parameterized directives -->
+  <!-- Second Section with Blue Div -->
+  <div class="flex flex-col">
+    <!-- Blue div -->
+    <div
+      [ngClass]="isDivStatusActive == true ? 'bg-green-600' : 'bg-red-400'"
+      class="px-7 py-2 w-full text-center"
+    >
+      <div>{{ valueOfDiv }}</div>
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="mt-2">
+      <button
+        (click)="toggleBtwConditions()"
+        class="px-4 py-2 bg-purple-500 text-white rounded-lg"
+      >
+        Change Status
+      </button>
+    </div>
+  </div>
+
+   <!-- ternery operator condtion comparision using the parameterized directives -->
+  <!-- Second Section with Blue Div -->
+  <div class="flex flex-col">
+   <button class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" (click)="navigate()">Navigate To Counter </button>
+  </div>
+
+
+  <!-- For loop on Employee Object  -->
+  <div class="p-2 bg-gray-50">
+    <table class="min-w-full table-auto border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-200 text-left">
+          <th class="px-4 py-2 border border-gray-300">Id</th>
+          <!-- <th class="px-4 py-2 border border-gray-300">Status</th> -->
+          <th class="px-4 py-2 border border-gray-300">Name</th>
+          <th class="px-4 py-2 border border-gray-300">Gender</th>
+          <th class="px-4 py-2 border border-gray-300">Position</th>
+          <th class="px-4 py-2 border border-gray-300">Department</th>
+          <th class="px-4 py-2 border border-gray-300">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let emp of Employees"
+          [ngClass]="emp.status ? 'bg-green-100' : 'bg-red-100' "
+          class="hover:bg-gray-100 hover:shadow-lg"
+        >
+          <td class="px-2 py-1 border border-gray-300">{{ emp.id }}</td>
+          <!-- <td  class="px-2 py-1 border border-gray-300">{{ emp.status }}</td> -->
+          <td class="px-2 py-1 border border-gray-300">{{ emp.name }}</td>
+          <td   class="px-6  py-2 border border-gray-300">
+            <span >{{ emp.gender === "male" ? "👨" : "👩" }}</span>
+          </td>
+          <td class="px-2 py-1 border border-gray-300">{{ emp.position }}</td>
+          <td class="px-2 py-1 border border-gray-300">{{ emp.department }}</td>
+
+          <td class="px-2 py-1 border border-gray-300">
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+              <div class="bg-blue-600 h-2.5 rounded-full" [ngStyle]="{'width': emp.quality_score + '%'}">
+                <p class="pt-2 font-mono text-sm">{{emp.quality_score}}%</p>
+              </div>
+            </div>
+
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>

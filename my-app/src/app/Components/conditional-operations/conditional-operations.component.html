@@ -1,0 +1,16 @@
+<p>conditional-operations works!</p>
+<div class="box-border outline-lime-700">
+  @if(Display){
+  <div class="bg-red-500 h-16 w-16 p-10 m-10"></div>
+  }
+  @else if(Display == null)
+  {
+    <div class="bg-black h-16 w-16 p-10 m-10"></div>
+  }
+  @else {
+  <div class="bg-green-500 h-16 w-16 p-10 m-10"></div>
+  }
+</div>
+<div>
+  <button class="btn p-2 m-2 bg-gray-400" (click)="toggle()">Toggle</button>
+</div>

@@ -1,0 +1,68 @@
+<div class="mt-2 p-2 bg-slate-900 text-white rounded">
+  <h4>Pipes In Angular</h4>
+  <h3>Default Pipe And Custome Pipe</h3>
+</div>
+
+<div class="row flex-col gap-9 ml-9">
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{Value}}
+    <br />
+    Uppercase Pipe - {{Value | uppercase}}
+  </div>
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{Value}}
+    <br />
+    Lowercase Pipe - {{Value | lowercase}}
+  </div>
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{lorem}}
+    <br />
+    TitleCase Pipe - {{lorem | titlecase}}
+  </div>
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{CurrentDate}}
+    <br />
+    Date Pipe - {{CurrentDate | date}}
+  </div>
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{CurrentDate | date:'dd-MM-yyyy'}}
+    <br />
+    Date Pipe - {{CurrentDate | date :'dd-MMM-yyyy'}}
+  </div>
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{Currency}}
+    <br />
+    Currency Pipe - {{Currency | currency}}
+  </div>
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{Percentage}}
+    <br />
+    Percentage Pipe - {{Percentage | percent}}
+  </div>
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{JsonObj}}
+    <br />
+    Json Pipe - {{JsonObj | json}}
+  </div>
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{CurrentTime}}
+    <br />
+    Async Pipe - {{CurrentTime | async | date : 'hh:mm:ss'}}
+  </div>
+
+  <div class="col-3 p-2 m-2 bg-gray-200 shadow-md gap-2">
+    Original Value - {{JsonObj.country}}
+    <br />
+    Custome Pipe - {{JsonObj.country  | na}}
+  </div>
+
+</div>

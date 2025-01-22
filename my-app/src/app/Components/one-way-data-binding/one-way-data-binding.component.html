@@ -1,0 +1,53 @@
+<div>
+  <div class="container bg-gray-100 p-10 justify-center gap-2 mb-2 flex-col">
+    <p class="font-bold capitalize mb-4">Interpolation in Angular</p>
+    <h3>Input Value = {{ InputText }}</h3>
+    <h3>Input Type = {{ InputType }}</h3>
+
+    <hr class="mb-2" />
+    <input type="{{ InputType }}" name="" value="{{ InputText }}" id="" />
+    <hr class="mt-2" />
+  </div>
+
+  <div class="container bg-pink-100 p-10 justify-center gap-2 mb-2 flex-col">
+    <p class="font-bold capitalize mb-4">Property Binding in Angular</p>
+    <div [class]="myClassname">Danger</div>
+    <input type="text" [value]="InputText" name="" id="" />
+    <input [type]="InputType" name="" id="" />
+  </div>
+
+  <div class="container bg-blue-100 p-10 justify-center gap-2 mb-2 flex-col">
+    <p class="font-bold capitalize mb-4">Event Binding in Angular</p>
+    <button class="btn px-1 py-2 bg-green-600" (click)="showAlert('Welcome to Angular!!')">Click Me!</button>
+  </div>
+
+  <div class="container bg-red-100 p-10 justify-center gap-2 mb-2 flex-col">
+    <p class="font-bold capitalize mb-4">Two Way Data Binding in Angular</p>
+    <span><code>{{InputText}} - </code></span>
+    <input type="text" class="border-1-black" [(ngModel)]="InputText" name="" id="" />
+  </div>
+
+  <div class="container bg-indigo-100 p-10 justify-center gap-2 mb-2 flex-col">
+    <h3>
+      Choose your state from DropDown
+    </h3>
+    <select [(ngModel)]="stateName">
+      <option value="">Select State</option>
+      <option value="Maharashtra">Maharashtra</option>
+      <option value="Karnataka">Karnataka</option>
+      <option value="Goa">Goa</option>
+      <option value="Andhra Pradesh">Andhra Pradesh</option>
+      <option value="Tamil Nadu">Tamil Nadu</option>
+      <option value="Uttar Pradesh">Uttar Pradesh</option>
+      <option value="Gujarat">Gujarat</option>
+    </select>
+  </div>
+
+  <!-- How to use Signal's  -->
+   <div  class="container bg-fuchsia-100 p-10 justify-center gap-2 mb-2 flex-col">
+    <h3>Working With Signal's</h3>
+    <span><code class="px-1 py-1 bg-green-50" >{{myname()}}</code></span>
+    <br>
+    <button class="bg-blue-200 px-2 py-2 rounded-md" (click)="changeSignalValue()">Signal</button>
+   </div>
+</div>

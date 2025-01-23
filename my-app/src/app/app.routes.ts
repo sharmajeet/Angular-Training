@@ -8,6 +8,8 @@ import { TemplateComponent } from './Forms/template/template.component';
 import { ReactiveComponent } from './Forms/reactive/reactive.component';
 import { ApiIntegrationComponent } from './Working_With_Api/api-integration/api-integration.component';
 import { PostApiComponent } from './Working_With_Api/post-api/post-api.component';
+import { LifeCycleComponent } from './Life-Cycle-Events/life-cycle/life-cycle.component';
+import { TemplateComponents } from './Ng-Template/template/template.component';
 
 export const routes: Routes = [
   {
@@ -45,5 +47,14 @@ export const routes: Routes = [
   {
     path  : 'postapi',
     component:PostApiComponent
+  },
+  {
+    path : 'lifecycle',
+    component:LifeCycleComponent
+  },
+  {
+    path: 'ngtemplate',
+    component: TemplateComponents
+    
   }
 ];

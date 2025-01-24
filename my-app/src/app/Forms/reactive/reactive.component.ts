@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 @Component({
   selector: 'app-reactive',
-  imports: [ReactiveFormsModule , JsonPipe],
+  imports: [ReactiveFormsModule ],
   templateUrl: './reactive.component.html',
   styleUrl: './reactive.component.css'
 })

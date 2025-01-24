@@ -11,9 +11,9 @@ import { RouterLink } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterLink,
+
     RouterOutlet,
-   
+
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

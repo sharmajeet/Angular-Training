@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterModule],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+  styleUrl: './layout.component.css',
 })
 export class LayoutComponent {
+  router = inject(Router);
+  logout() {
+    localStorage.removeItem('loginUser');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('userEmail');
 
+    alert('Logout Success');
+    this.router.navigateByUrl('login');
+  }
 }

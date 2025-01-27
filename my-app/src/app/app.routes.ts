@@ -12,6 +12,7 @@ import { LifeCycleComponent } from './Life-Cycle-Events/life-cycle/life-cycle.co
 import { TemplateComponents } from './Ng-Template/template/template.component';
 import { LoginComponent } from './Components/login/login.component';
 import { LayoutComponent } from './Components/layout/layout.component';
+import { SignupComponent } from './Components/signup/signup.component';
 
 export const routes: Routes = [
 
@@ -30,6 +31,7 @@ export const routes: Routes = [
     component: LayoutComponent,
 
     children: [
+
       {
         path : 'counter-app',
         component:CounterComponent
@@ -77,6 +79,9 @@ export const routes: Routes = [
       }
 
     ]
-  },
+  }, {
+    path : 'signup',
+    component:SignupComponent
+  }
 
 ];

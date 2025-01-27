@@ -57,63 +57,116 @@
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a
-            routerLink="/counter-app"
-            class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-            aria-current="page"
-            >Counter App</a
-          >
-          <a
-            routerLink="/data-binding"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >Data Binding </a
-          >
-          <a
-            routerLink="/directives"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >Directives</a
-          >
-          <a
-            routerLink="/controlflow"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >Control Flow</a
-          >
-          <a
-            routerLink="/pipes"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >Pipes</a
-          >
-          <a
-            routerLink="/forms"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >Template Forms</a
-          >
-          <a
-            routerLink="/reactiveforms"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >Reactive Forms</a
-          >
-          <a
-            routerLink="/api"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >Api </a
-          >
-          <a
-            routerLink="/postapi"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >Post APi </a
-          >
-          <a
-            routerLink="/lifecycle"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >LifeCycle </a
-          >
-          <a
-            routerLink="/ngtemplate"
-            class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-            >Ng-Template </a
-          >
+            <!-- Basics Dropdown -->
+            <div class="relative group">
+              <button
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >
+                Basics
+                <span class="ml-1">▼</span>
+              </button>
+              <div
+                class="absolute left-0 hidden group-hover:block bg-gray-800 rounded-md shadow-lg py-1 w-48"
+              >
+                <a
+                  routerLink="/counter-app"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Counter App</a
+                >
+                <a
+                  routerLink="/data-binding"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Data Binding</a
+                >
+                <a
+                  routerLink="/directives"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Directives</a
+                >
+                <a
+                  routerLink="/controlflow"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Control Flow</a
+                >
+              </div>
+            </div>
+
+            <!-- Forms Dropdown -->
+            <div class="relative group">
+              <button
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >
+                Forms
+                <span class="ml-1">▼</span>
+              </button>
+              <div
+                class="absolute left-0 hidden group-hover:block bg-gray-800 rounded-md shadow-lg py-1 w-48"
+              >
+                <a
+                  routerLink="/forms"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Template Forms</a
+                >
+                <a
+                  routerLink="/reactiveforms"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Reactive Forms</a
+                >
+              </div>
+            </div>
+
+            <!-- API Dropdown -->
+            <div class="relative group">
+              <button
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >
+                API
+                <span class="ml-1">▼</span>
+              </button>
+              <div
+                class="absolute left-0 hidden group-hover:block bg-gray-800 rounded-md shadow-lg py-1 w-48"
+              >
+                <a
+                  routerLink="/api"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Get API</a
+                >
+                <a
+                  routerLink="/postapi"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Post API</a
+                >
+              </div>
+            </div>
+
+            <!-- Advanced Topics -->
+            <div class="relative group">
+              <button
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              >
+                Advanced
+                <span class="ml-1">▼</span>
+              </button>
+              <div
+                class="absolute left-0 hidden group-hover:block bg-gray-800 rounded-md shadow-lg py-1 w-48"
+              >
+                <a
+                  routerLink="/lifecycle"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Lifecycle Hooks</a
+                >
+                <a
+                  routerLink="/ngtemplate"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Ng-Template</a
+                >
+                <a
+                  routerLink="/pipes"
+                  class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >Pipes</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -143,57 +196,17 @@
           </svg>
         </button>
 
-        <!-- Profile dropdown -->
-        <div class="relative ml-3">
-          <div>
-            <button
-              type="button"
-              class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              id="user-menu-button"
-              aria-expanded="false"
-              aria-haspopup="true"
-            >
-              <span class="absolute -inset-1.5"></span>
-              <span class="sr-only">Open user menu</span>
-              <img
-                class="size-8 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
-            </button>
-          </div>
-        </div>
+        <button
+        (click)="logout()"
+          type="button"
+          class="relative ml-3 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+        >Logout
+      </button>
       </div>
     </div>
   </div>
 
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
-    <div class="space-y-1 px-2 pb-3 pt-2">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a
-        routerLink="/counter-app"
-        class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-        aria-current="page"
-        >Counter App</a
-      >
-      <a
-        routerLink="/data-binding"
-        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-        >Data Binding </a
-      >
-      <a
-        routerLink="/directives"
-        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-        >Directives</a
-      >
-      <a
-        href="#"
-        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-        >FutureWork</a
-      >
-    </div>
-  </div>
+
 </nav>
 
 <div class="container">

@@ -2,39 +2,52 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
-  imports: [CommonModule,RouterModule,FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrl: './signup.component.css',
 })
 export class SignupComponent {
-
-  userObj : any  = {
-    username : '',
-    password : '',
-    email : '',
-    type :['admin','user'],
-    confirmpassword :''
-  }
-
-
-http = inject(HttpClient);
+  termsAccepted: boolean = false;
+  userObj: any = {
+    username: '',
+    type: '',
+    email: '',
+    password: '',
+    confirmpassword: ''
+  };
+  router = inject(Router);
+  http = inject(HttpClient);
   Register() {
-    if(this.userObj.password === this.userObj.confirmpassword) {
-      // register user here
-      this.http.post('http://localhost:3000/register', this.userObj).subscribe((res) => {
-       if(res == true)
-       {
-         alert('User registered successfully');
+    if (this.userObj.password !== this.userObj.confirmpassword) {
+      alert('Passwords do not match!');
+      return;
+    }
 
-       }
-      })
-    } else {
-      // display error message
-      alert('Error registering');
+    if(this.termsAccepted) {
+      this.http.post('http://localhost:3000/register', this.userObj).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if (response.success) {
+            alert(response.message || 'Registration successful!');
+            this.router.navigateByUrl('/');
+          } else {
+            alert(response.message || 'Registration failed. Please try again.');
+          }
+        },
+        error: (error) => {
+          if (error.error.message) {
+            alert(error.error.message);
+          } else if (error.error) {
+            alert(error.error);
+          } else {
+            alert('Something went wrong. Please try again later.');
+          }
+        },
+      });
     }
   }
 }

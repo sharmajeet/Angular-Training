@@ -13,6 +13,7 @@ import { TemplateComponents } from './Ng-Template/template/template.component';
 import { LoginComponent } from './Components/login/login.component';
 import { LayoutComponent } from './Components/layout/layout.component';
 import { SignupComponent } from './Components/signup/signup.component';
+import { authGuard } from './Services/auth.guard';
 
 export const routes: Routes = [
 
@@ -34,47 +35,58 @@ export const routes: Routes = [
 
       {
         path : 'counter-app',
-        component:CounterComponent
+        component:CounterComponent,
+        canActivate : [authGuard]
       },
       {
         path : 'directives',
-        component:WorkingWithDirectivesComponent
+        component:WorkingWithDirectivesComponent,
+        canActivate : [authGuard]
       },
       {
         path : 'data-binding',
-        component: OneWayDataBindingComponent
+        component: OneWayDataBindingComponent,
+        canActivate : [authGuard]
       },
       {
         path: 'controlflow',
-        component:ControlFlowDirectivesComponent
+        component:ControlFlowDirectivesComponent,
+        canActivate : [authGuard]
       },
       {
         path : 'pipes',
-        component:PipeComponent
+        component:PipeComponent,
+        canActivate : [authGuard]
       },
       {
         path : 'forms',
-        component:TemplateComponent
+        component:TemplateComponent,
+        canActivate : [authGuard]
       },
       {
         path : 'reactiveforms',
-        component:ReactiveComponent
+        component:ReactiveComponent,
+        canActivate : [authGuard]
       },
       {
         path  : 'api',
-        component:ApiIntegrationComponent
+        component:ApiIntegrationComponent,
+        canActivate : [authGuard]
       },
       {
         path  : 'postapi',
-        component:PostApiComponent
+        component:PostApiComponent,
+        canActivate : [authGuard]
       },
       {
         path : 'lifecycle',
-        component:LifeCycleComponent
+        component:LifeCycleComponent,
+        canActivate : [authGuard]
       },
       {
         path: 'ngtemplate',
-        component: TemplateComponents
+        component: TemplateComponents,
+        canActivate : [authGuard]
 
       }
 

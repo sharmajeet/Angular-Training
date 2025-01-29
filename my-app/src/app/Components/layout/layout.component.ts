@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-layout',
@@ -9,12 +10,25 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 })
 export class LayoutComponent {
   router = inject(Router);
+  UserName : string = "";
+  toast = inject(ToastrService);
+  constructor() {
+   let userInfo = localStorage.getItem('loginUser');
+   if(userInfo != null)
+   {
+    debugger
+    this.UserName = userInfo;
+   }else{
+    debugger
+    console.log("There is an error while retriving username.")
+   }
+  }
   logout() {
     localStorage.removeItem('loginUser');
     localStorage.removeItem('userType');
     localStorage.removeItem('userEmail');
 
-    alert('Logout Success');
+    this.toast.success('Logout Success');
     this.router.navigateByUrl('login');
   }
 }

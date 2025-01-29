@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Route, Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -19,6 +20,7 @@ UserObj : any =  {
 }
 http = inject(HttpClient);
 router = inject(Router);
+toast = inject(ToastrService)
 
 //code fot the signup
 signUp(){
@@ -28,7 +30,7 @@ Login() {
   this.http.post(`http://localhost:3000/login`, this.UserObj).subscribe(
     (res: any) => {
       if (res.success) {
-        alert("Login Success");
+        this.toast.success("Login Succesfull.")
         localStorage.setItem('loginUser', this.UserObj.username);
         // You might also want to store the user type and email
         localStorage.setItem('userType', res.user.type);
@@ -40,7 +42,7 @@ Login() {
     },
     (error) => {
       // Handle errors (like network errors or invalid credentials)
-      alert(error.error?.message || "Login Failed");
+      this.toast.error(error.error?.message || "Login Failed");
     }
   );
 }

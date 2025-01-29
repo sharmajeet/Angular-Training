@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signup',
@@ -21,9 +22,10 @@ export class SignupComponent {
   };
   router = inject(Router);
   http = inject(HttpClient);
+  toast = inject(ToastrService)
   Register() {
     if (this.userObj.password !== this.userObj.confirmpassword) {
-      alert('Passwords do not match!');
+      this.toast.error('Passwords do not match!');
       return;
     }
 
@@ -32,19 +34,19 @@ export class SignupComponent {
         next: (response: any) => {
           console.log(response);
           if (response.success) {
-            alert(response.message || 'Registration successful!');
+            this.toast.success(response.message || 'Registration successful!');
             this.router.navigateByUrl('/');
           } else {
-            alert(response.message || 'Registration failed. Please try again.');
+            this.toast.error(response.message || 'Registration failed. Please try again.');
           }
         },
         error: (error) => {
           if (error.error.message) {
-            alert(error.error.message);
+            this.toast.error(error.error.message);
           } else if (error.error) {
-            alert(error.error);
+            this.toast.error(error.error);
           } else {
-            alert('Something went wrong. Please try again later.');
+            this.toast.error('Something went wrong. Please try again later.');
           }
         },
       });

@@ -1,0 +1,8 @@
+
+ 1738322745617 : ::1 | POST : //register 
+
+ 1738324552937 : ::1 | OPTIONS : /login 
+
+ 1738324552942 : ::1 | POST : /login 
+
+ 1738325270833 : ::1 | GET : /favicon.ico 

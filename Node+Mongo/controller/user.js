@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const User = require('../model/UserModel');
 
+
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
@@ -62,39 +63,30 @@ async function getAllUser(req, res) {
 // Register user
 async function createNewUser(req, res) {
     try {
-      console.log('Request Body:', req.body); // Debugging line
       const userData = req.body;
-  
-      if (!userData) {
+      if (!userData || Object.keys(userData).length === 0) {
         return res.status(400).json({ success: false, message: 'Request body is missing' });
       }
-  
+      if (!userData.username) {
+        return res.status(400).json({ success: false, message: 'Username is required' });
+      }
       const data = {
         username: userData.username,
         email: userData.email,
         type: userData.type,
         password: userData.password,
       };
-  
-      // Validate user input
       const value = await userSchema.validateAsync(data);
-  
-      // Check if username or email exists
       const existingUsername = await User.findOne({ username: value.username });
       if (existingUsername) {
         return res.status(409).json({ success: false, message: 'Username already exists' });
       }
-  
       const existingEmail = await User.findOne({ email: value.email });
       if (existingEmail) {
         return res.status(409).json({ success: false, message: 'Email already exists' });
       }
-  
-      // Generate salt and hash password
       const salt = crypto.randomBytes(16).toString('hex');
       const passwordhash = crypto.pbkdf2Sync(value.password, salt, 1000, 64, 'sha512').toString('hex');
-  
-      // Create new user in MongoDB
       const newUser = new User({
         username: value.username,
         email: value.email,
@@ -102,11 +94,8 @@ async function createNewUser(req, res) {
         salt,
         passwordhash,
       });
-  
       await newUser.save();
-
       return res.status(201).json({ success: true, message: 'User registered successfully' });
-  
     } catch (error) {
       console.error('Error:', error.message);
       if (error.isJoi) {
@@ -114,9 +103,76 @@ async function createNewUser(req, res) {
       }
       return res.status(500).json({ success: false, message: 'Internal server error' });
     }
+}
+
+
+// Function to get user by username
+async function getUserByUsername(username) {
+  return await User.findOne({ username });
+}
+
+//login usera
+async function loginUser(req, res) {
+  var _a, username, password, usernameRegex, passwordRegex, user, isValid, error_3;
+  _a = req.body, username = _a.username, password = _a.password;
+  username = username.trim();
+  password = password.trim();
+  usernameRegex = /^[a-zA-Z0-9_-]+$/;
+  passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).*$/;
+  // Validate username length and format
+  if (!username || username.length < 3) {
+      return res.status(400).json({
+          success: false,
+          message: 'Invalid username. It must be at least 3 characters long.',
+      });
   }
+  if (!usernameRegex.test(username)) {
+      return res.status(400).json({
+          success: false,
+          message: 'Invalid username format.',
+      });
+  }
+  user = await getUserByUsername(username);
+  if (!user) {
+      return res.status(401).json({ success: false, message: 'Invalid credentials' });
+  }
+  // Validate password length and format
+  if (!password || password.length < 5) {
+      return res.status(400).json({
+          success: false,
+          message: 'Invalid password. It must be at least 5 characters long.',
+      });
+  }
+  if (!passwordRegex.test(password)) {
+      return res.status(400).json({
+          success: false,
+          message: 'Invalid password format. It must include at least one uppercase letter, one lowercase letter, and one special character.',
+      });
+  }
+  try {
+      // Use crypto to compare password
+      const hashedPassword = crypto.pbkdf2Sync(password, user.salt, 1000, 64, 'sha512').toString('hex');
+      isValid = (hashedPassword === user.passwordhash);
+      if (!isValid) {
+          return res.status(401).json({ success: false, message: 'Invalid credentials' });
+      }
+      return res.status(200).json({
+          success: true,
+          message: 'Login successful',
+          user: {
+              username: username,
+              email: user.email,
+              type: user.type,
+          },
+      });
+  } catch (error_3) {
+      return res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+}
+
 
 module.exports = {
   getAllUser,
-  createNewUser
+  createNewUser,
+  loginUser
 };

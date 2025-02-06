@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Details Form</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Employee Details Form</h2>
+    <form (ngSubmit)="SaveUser()" [formGroup]="EmployeeForm">
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" formControlName="fullname"  placeholder="Enter your full name" >
+      </div>
+
+      <!-- Age -->
+      <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" formControlName="age" class="form-control" id="age" placeholder="Enter your age" required>
+      </div>
+
+      <!-- Gender -->
+      <div class="mb-3">
+        <label class="form-label">Gender</label>
+        <div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="male" value="male">
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="female" value="female">
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" formControlName="gender"  type="radio" name="gender" id="other" value="other">
+            <label class="form-check-label" for="other">Other</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Graduation Details -->
+      <div class="mb-3">
+        <label for="graduation" class="form-label">Graduation</label>
+        <select formControlName="graduation"  class="form-select" id="graduation" required>
+          <option value="" selected disabled>Select your graduation</option>
+          <option value="btech">B.Tech</option>
+          <option value="mtech">M.Tech</option>
+          <option value="bsc">B.Sc</option>
+          <option value="msc">M.Sc</option>
+          <option value="ba">BA</option>
+          <option value="ma">MA</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <!-- Physical Disabilities -->
+      <div class="mb-3">
+        <label class="form-label">Physical Disabilities</label>
+        <div>
+          <div class="form-check">
+            <input formControlName="disablities" class="form-check-input" type="checkbox" id="disability1" value="visual">
+            <label class="form-check-label" for="disability1">Visual Impairment</label>
+          </div>
+          <div class="form-check">
+            <input formControlName="disablities" class="form-check-input" type="checkbox" id="disability2" value="hearing">
+            <label class="form-check-label" for="disability2">Hearing Impairment</label>
+          </div>
+          <div class="form-check">
+            <input formControlName="disablities" class="form-check-input" type="checkbox" id="disability3" value="mobility">
+            <label class="form-check-label" for="disability3">Mobility Impairment</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea formControlName="address" class="form-control" id="address" rows="3" placeholder="Enter your address"></textarea>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter your email" required>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input formControlName="number" type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+      </div>
+
+      <!-- Hobby section -->
+      <div class="form-group">
+        <h2>Add Section</h2>
+        <br />
+        <button type="button" class="btn btn-primary"  (click)="AddNewSection()" >+ Add Section</button>
+        <div formArrayName="attribute" class="p-3 mt-2">
+          @for (item of Row.controls; track item; let i = $index) {
+          <div  [formGroupName]="i">
+            <div class="row border mt-3 p-3">
+              <div class="col-12 col-sm-5">
+                <label for="hobby">Hobby</label>
+                <input type="text" class="form-control" formControlName="Hobby" />
+              </div>
+              <div class="col-12 col-sm-5">
+                <label for="hobby">Passion</label>
+                <input type="text" class="form-control" formControlName="Passion"  />
+              </div>
+            </div>
+          </div>
+        }
+        </div>
+      </div>
+
+
+      <!-- Submit Button -->
+      <button  type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <!-- Bootstrap JS (Optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

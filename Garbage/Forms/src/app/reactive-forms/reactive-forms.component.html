@@ -1,0 +1,106 @@
+<div class="text-center mb-4">
+  <h1
+    class="display-4 font-weight-bold text-decoration-underline shadow-sm pb-4"
+  >
+    Working With Template Forms
+  </h1>
+</div>
+
+<form
+  class="container max-w-md mx-auto"
+  (ngSubmit)="SaveUser()"
+  [formGroup]="UserForm"
+>
+  <div class="form-group mb-4">
+    <label for="floating_email" class="form-label">Email address</label>
+    <input
+      type="email"
+      name="Email"
+      id="floating_email"
+      class="form-control"
+      formControlName="Email"
+      placeholder="Enter email"
+    />
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="floating_password" class="form-label">Password</label>
+    <input
+      type="password"
+      name="Password"
+      formControlName="Password"
+      id="floating_password"
+      class="form-control"
+      placeholder="Enter password"
+    />
+  </div>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input
+            formControlName="gender"
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            value="Male"
+            checked
+          />
+          <label class="form-check-label" for="gender"> Male </label>
+        </div>
+        <div class="form-check">
+          <input
+            formControlName="gender"
+            class="form-check-input"
+            type="radio"
+            name="gender"
+            id="gridRadios"
+            value="Female"
+          />
+          <label class="form-check-label" for="gridRadios2"> Female </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Address</label>
+    <textarea
+      formControlName="address"
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+      name="address"
+    ></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Agree?</label>
+    <input type="checkbox" formControlName="agree" name="agree" />
+  </div>
+
+  <div class="form-group">
+    <h2>Add Section</h2>
+    <br />
+    <button type="button" class="btn btn-primary" (click)="AddNewSection()">+ Add Section</button>
+    <div formArrayName="attribute" class="p-3 mt-2">
+      @for (item of Rows.controls; track item; let i = $index) {
+      <div [formGroupName]="i">
+        <div class="row border mt-3 p-3">
+          <div class="col-12 col-sm-5">
+            <label for="hobby">Hobby</label>
+            <input type="text" class="form-control" formControlName="Hobby" />
+          </div>
+          <div class="col-12 col-sm-5">
+            <label for="hobby">Passion</label>
+            <input type="text" class="form-control" formControlName="Passion"  />
+          </div>
+        </div>
+      </div>
+    }
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

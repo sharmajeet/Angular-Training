@@ -1,0 +1,96 @@
+<div class="text-center mb-4">
+  <h1
+    class="display-4 font-weight-bold text-decoration-underline shadow-sm pb-4"
+  >
+    Working With Template Forms
+  </h1>
+</div>
+
+<form class="container max-w-md mx-auto" #form="ngForm">
+  <div class="form-group mb-4">
+    <label for="floating_email" class="form-label">Email address</label>
+    <input
+      type="email"
+      name="Email"
+      #email="ngModel"
+      required
+      [(ngModel)]="FormDetails.Email"
+      id="floating_email"
+      class="form-control"
+      placeholder="Enter email"
+    />
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="floating_password" class="form-label">Password</label>
+    <input
+      type="password"
+      name="Password"
+      [(ngModel)]="FormDetails.Password"
+      id="floating_password"
+      class="form-control"
+      placeholder="Enter password"
+    />
+  </div>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input
+            [(ngModel)]="FormDetails.gender"
+            class="form-check-input"
+            type="radio"
+            name="gridRadios"
+            id="gridRadios1"
+            value="Male"
+            checked
+          />
+          <label class="form-check-label" for="gridRadios1"> Male </label>
+        </div>
+        <div class="form-check">
+          <input
+            [(ngModel)]="FormDetails.gender"
+            class="form-check-input"
+            type="radio"
+            name="gridRadios"
+            id="gridRadios2"
+            value="Female"
+          />
+          <label class="form-check-label" for="gridRadios2"> Female </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Address</label>
+    <textarea
+    [(ngModel)]="FormDetails.address"
+    name="address"
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+    ></textarea>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <button type="submit" (click)="ResetForm()" class="btn btn-secondary">
+      Reset
+    </button>
+
+    <button
+      type="submit"
+      [disabled]="form.invalid"
+      (click)="SubmitForm()"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+
+<div class="col-4">
+  <pre>{{ FormDetails | json }}</pre>
+</div>

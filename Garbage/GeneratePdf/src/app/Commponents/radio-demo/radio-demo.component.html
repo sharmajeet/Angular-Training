@@ -1,0 +1,118 @@
+<!-- <div class="container mt-4">
+  <h4>Input Field Controller</h4>
+
+
+  <form #inputForm="ngForm"(ngSubmit)="onSubmit(inputForm)">
+
+
+    <div class="btn-group" ngbRadioGroup [(ngModel)]="selectedMode" name="mode">
+
+
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input
+          ngbButton
+          type="radio"
+          [value]="InputMode.Code"
+          (click)="toggleMode(InputMode.Code)"
+          name="radioMode"
+        /> Code Entry
+      </label>
+
+
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input
+          ngbButton
+          type="radio"
+          [value]="InputMode.InvestorId"
+          (click)="toggleMode(InputMode.InvestorId)"
+          name="radioMode"
+        /> Investor Id
+      </label>
+    </div>
+
+
+    <div class="mt-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Code..."
+        [disabled]="selectedMode !== InputMode.Code"
+        [(ngModel)]="formData.codeEntry"
+        name="codeEntry"
+      />
+    </div>
+
+
+    <div class="mt-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Investor ID..."
+        [disabled]="selectedMode !== InputMode.InvestorId"
+        [(ngModel)]="formData.investorId"
+        name="investorId"
+      />
+    </div>
+
+
+    <button type="submit" class="btn btn-success mt-3">Submit</button>
+
+    <div class="mt-2">
+      <small>Current mode: {{ selectedMode }}</small>
+    </div>
+  </form>
+</div> -->
+
+<div class="container mt-4">
+  <h4>Input Field Controller</h4>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+
+    <div class="btn-group">
+
+      <label class="btn btn-outline-primary" [class.active]="formGroup.get('mode')?.value === InputMode.Code">
+        <input
+                 ngbButton
+                type="radio"
+               formControlName="mode"
+               [value]="InputMode.Code"
+               name="mode"> Code Entry
+      </label>
+
+      <label class="btn btn-outline-primary" [class.active]="formGroup.get('mode')?.value === InputMode.InvestorId">
+        <input type="radio"
+               formControlName="mode"
+               [value]="InputMode.InvestorId"
+               name="mode"> Investor Id
+      </label>
+    </div>
+
+
+    <div class="mt-3">
+      <input
+      ngbButton
+        type="text"
+        class="form-control"
+        placeholder="Enter Code..."
+        formControlName="codeEntry"
+        [class.bg-light]="formGroup.get('mode')?.value !== InputMode.Code"
+      />
+    </div>
+
+
+    <div class="mt-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Investor ID..."
+        formControlName="investorId"
+        [class.bg-light]="formGroup.get('mode')?.value !== InputMode.InvestorId"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Submit</button>
+
+    <div class="mt-2">
+      <small>Current mode: {{ formGroup.get('mode')?.value }}</small>
+    </div>
+  </form>
+</div>
